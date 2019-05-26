@@ -1,0 +1,24 @@
+
+<!DOCTYPE html>
+<html ng-app="myApp"  >
+<body>
+
+	<div ng-controller="myCtrl">{{ firstName + " " + lastName }}
+	
+	<br>
+	
+	<div  >
+  <ul>
+    <li ng-repeat="x in names">
+      {{ x }}
+    </li>
+  </ul>
+</div>
+	
+	</div>
+
+	<script src="js/lib/angular_1.6.9.min.js"></script>
+	<script src="js/script/myApp.js"></script>
+	<script src="js/script/script.js"></script>
+</body>
+</html>
