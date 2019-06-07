@@ -1,15 +1,69 @@
-
 <!DOCTYPE html>
 <html ng-app="App">
-<body>
 
-	<h1>WebStudios</h1>
 
-	<div gn-view></div>
+<head>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular.min.js"></script>
+<script src="http://ajax.googleapis.com/ajax/libs/angularjs/1.2.19/angular-route.min.js"></script>
+<script src="http://code.angularjs.org/1.2.19/i18n/angular-locale_es-es.js"></script>
+<script src="js/App.js"></script>
 
-	<h4>Coorporativo: Pedro Crisanto T.</h4>
-	<script src="js/lib/angular_1.6.9.min.js"></script>
-	<script src="js/App.js"></script>
-	<script src="js/script/script.js"></script>
-</body>
+
+
+<!-- Style -->
+
+<link rel="stylesheet" type="text/css" href="js/css/mystyle.css">
+
+</head>
+
+
+
+
+
+
+<!-- xinclude: xinc\masthead.html -->
+<center>
+
+	<!-- M A S T H E A D table -->
+
+	<table id=masthead cellspacing=0 cellpadding=0>
+		<tr>
+		</tr>
+		<tr>
+			<td colspan=2>
+				<hr size=1 style="color: #d2d2d2;">
+			</td>
+		</tr>
+
+	</table>
+	<div id=topmenu>
+		<table id=topnav border=0 cellpadding=0 cellspacing=0>
+			<tr>
+			</tr>
+		</table>
+		<h3>Web Studios</h3>
+	</div>
+	<!-- M A S T H E A D table -->
+
+	<!-- C O N T E N T table -->
+
+	<table border=0 id=content cellspacing=0 cellpadding=0>
+		<tr>
+			<!-- 			<tdindex valign=top> -->
+			<!-- 				<div ng-view></div> -->
+			<!-- 			</td> -->
+		</tr>
+	</table>
+	<!-- end C O N T E N T table -->
+
+	<!-- xinclude: xinc\btmnav.html -->
+
+	<table id=bottomnav border=0 cellpadding=0 cellspacing=0>
+		<tr>
+
+		</tr>
+	</table>
+
+	<div class=footnote>Copyright 2019 - 2100</div>
+	<!-- /xinclude: xinc\btmnav.html -->
 </html>
