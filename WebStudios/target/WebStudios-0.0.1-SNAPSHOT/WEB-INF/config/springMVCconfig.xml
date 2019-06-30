@@ -13,9 +13,12 @@
 
 
 
+
+
 	<context:component-scan
 		base-package="com.studio.*" />
 
+	<mvc:annotation-driven />
 
 
 
@@ -32,6 +35,41 @@
 		<property name="suffix" value=".jsp" />
 	</bean>
 
-   <mvc:resources mapping = "/pages/**" location = "/WEB-INF/pages/" />
-   <mvc:annotation-driven/>
+	<!-- <mvc:resources mapping = "/pages/**" location = "/WEB-INF/pages/" /> -->
+
+	<mvc:resources mapping="/**" location="/" />
+
+
+
+
+
+
+
+	<!-- <bean id="DatabaseName" -->
+	<!-- class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+	<!-- <property name="jndiName" value="java:comp/env/jdbc/MyDB" /> -->
+	<!-- </bean> -->
+	<!-- <bean id="dataSource" class="org.springframework.jndi.JndiObjectFactoryBean"> -->
+	<!-- <property name="jndiName" value="jdbc/MyDB"/> -->
+	<!-- </bean> -->
+
+
+	<bean id="dataSource"
+		class="org.springframework.jndi.JndiObjectFactoryBean">
+		<property name="jndiName" value="java:comp/env/jdbc/MyDB" />
+	</bean>
+
+
+	<!-- jdbcTemplate uses dataSource -->
+	<bean id="jdbcTemplate"
+		class="org.springframework.jdbc.core.JdbcTemplate">
+		<property name="dataSource" ref="dataSource" />
+	</bean>
+
+
+	<!-- Create DataSource Bean -->
+
+
+
+
 </beans>

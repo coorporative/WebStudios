@@ -13,7 +13,6 @@ public class ShopController {
 	public @ResponseBody User getShopInJSON() {
 
 		User shop = new User();
-		shop.setUser("ppe");
 		shop.setPassword("123");
 
 		return shop;

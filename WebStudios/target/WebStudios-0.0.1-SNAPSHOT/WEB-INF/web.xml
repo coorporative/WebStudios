@@ -14,11 +14,11 @@
 	</welcome-file-list>
 
 
+	<!-- The definition of the Root Spring Container shared by all Servlets 
+		and Filters -->
 
 
-
-
-
+	
 
 	<servlet>
 		<servlet-name>spring-web</servlet-name>
