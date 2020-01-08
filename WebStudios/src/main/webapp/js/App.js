@@ -172,14 +172,12 @@ app
 
 							$scope.login = function() {
 
-								var data = {
-									'User' : {
-										'username' : $scope.username,
-										'password' : $scope.password
-									}
+								var data2 = {
+									'username' : $scope.username,
+									'password' : $scope.password
 								};
 
-								var userJSON = JSON.stringify(data);
+								var userJSON = JSON.stringify(data2);
 								console.log("userJSON pkas=" + userJSON);
 
 								// headers: {'Content-Type':
@@ -190,22 +188,20 @@ app
 										'Content-Type' : 'application/x-www-form-urlencoded;charset=utf-8;'
 									}
 								}
-								
-								
-								
-								console.log("config pkas=" + JSON.stringify(config));
+
+								console.log("config pkas="
+										+ JSON.stringify(config));
 
 								var req = {
 									method : 'POST',
 									url : 'http://localhost:8081/WebStudios/login',
-									data : {
-										username : $scope.username,
-										password : $scope.password
-									},
+									data : data2,
 									headers : {
 										'Content-Type' : 'application/json'
 									}
 								};
+
+								console.log("cpks req=" + JSON.stringify(req));
 
 								$http(req)
 										.success(
@@ -213,18 +209,12 @@ app
 													var url = $location.url();
 													var code = response.code;
 													var messaje = response.messaje;
-													console.log("response:"
-															+ response);
-													console.log("messaje:"
-															+ messaje);
-													console.log("code:" + code);
+													console.log("response:" +JSON.stringify(response));
 													if (code == 0) {
-														$location
-																.path("/principal");
+														$location.path("/principal");
 													} else {
 														$location.path("/");
 													}
-
 												})
 										.error(
 												function(response) {
