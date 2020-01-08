@@ -4,40 +4,14 @@ function CtrlHeader($scope) {
 	$scope.mensajeHeader = "Hola Mundo Vina mexico1";
 }
 
-// app.directive("w3TestDirective", [ function() {
-//
-// var directiveDefinitionObject = {
-// restrict : "E",
-// replace : true,
-// template : "<ul>"
-// + "<li><a href=\"#principal\">Principal2222</a></li>"
-// + "<li><a href=\"#ingles\">Ingles</a></li>"
-// + "<li><a href=\"#oracle\">Oracle</a></li>" +
-//				   
-// "</ul>"
-// ,
-// scope : true
-// }
-//
-// return directiveDefinitionObject;
-// } ]);
-
 app
 		.directive(
 				"w3TestDirective",
 				function() {
-					// return {
-					// template : "<ul>"
-					// + "<li><a href=\"#principal\">Principal2222</a></li>"
-					// + "<li><a href=\"#ingles\">Ingles</a></li>"
-					// + "<li><a href=\"#oracle\">Oracle</a></li>" +
-					// "</ul>"
-					// };
-
 					return {
 						template :
-				
-						          "<ul>                                                                      "
+
+						"<ul>                                                                      "
 								+ "   <li class='active'><a  href=\"#principal\"  ><span>Home</span></a></li> "
 								+ "   <li class='has-sub'><a  href=\"#ingles\" ><span>Ingles</span></a>       "
 								+ "      <ul>                                                                 "
@@ -95,15 +69,6 @@ app.config([ '$routeProvider', function($routeProvider) {
 	});
 
 } ]);
-
-// app.component('home', {
-// template : '<h1>Home</h1><p>Hello, {{ $ctrl.user.name }} !</p>',
-// controller : function() {
-// this.user = {
-// name : 'world'
-// };
-// }
-// });
 
 app.controller("CtrLogin", [ "$scope", function($scope) {
 	$scope.titulo = "Login";
@@ -189,19 +154,6 @@ app.factory("area", function() {
 	}
 });
 
-// app.controller("CtrlLogin", [ "$scope", "idioma", "matematicas_simples",
-// "radio", "area",
-// function($scope, idioma, matematicas_simples, radio, area) {
-// $scope.idioma = idioma;
-// $scope.suma = matematicas_simples.sumar(3, 6);
-// $scope.area = area(radio);
-//
-// $scope.myFunc = function() {
-// console.log("function called");
-// };
-//
-// } ]);
-//
 app
 		.controller(
 				"CtrlLogin",
@@ -216,10 +168,8 @@ app
 							$scope.password = '123';
 
 							var url = $location.url();
-
 							console.log("url zzz:" + url);
 
-							// console.log("function called");
 							$scope.login = function() {
 
 								var data = {
@@ -230,6 +180,7 @@ app
 								};
 
 								var userJSON = JSON.stringify(data);
+								console.log("userJSON pkas=" + userJSON);
 
 								// headers: {'Content-Type':
 								// 'application/x-www-form-urlencoded'}
@@ -239,6 +190,10 @@ app
 										'Content-Type' : 'application/x-www-form-urlencoded;charset=utf-8;'
 									}
 								}
+								
+								
+								
+								console.log("config pkas=" + JSON.stringify(config));
 
 								var req = {
 									method : 'POST',
@@ -254,15 +209,18 @@ app
 
 								$http(req)
 										.success(
-												function(response) {	
+												function(response) {
 													var url = $location.url();
 													var code = response.code;
 													var messaje = response.messaje;
-													console.log("response:"+ response);
-													console.log("messaje:"+ messaje);
+													console.log("response:"
+															+ response);
+													console.log("messaje:"
+															+ messaje);
 													console.log("code:" + code);
 													if (code == 0) {
-														$location.path("/principal");
+														$location
+																.path("/principal");
 													} else {
 														$location.path("/");
 													}
@@ -276,138 +234,31 @@ app
 												});
 							}
 
-							// $scope.myFunc = function() {
-							// console.log("function called");
-							//
-							// $http({	
-							// method : 'GET',
-							// url : 'http://localhost:8081/WebStudios/login'
-							// }).success(function(data, status, headers,
-							// config) {
-							// // fnOK(data);
-							// console.log(data)
-							//					
-							// $location.path('/principal')
-							// }).error(function(data, status, headers, config)
-							// {
-							// // fnError(data, status);
-							// });
-							//
-							// };
-
 						} ]);
 
-app
-		.controller(
-				"CtrPrincipal",
-				[
-						'$scope',
-						'$location',
-						'$log',
-						'$http',
-						function($scope, $location, $log, $http) {
-							var url = $location.url();
-							console.log("url zzz:" + url);
-							// console.log("function called");
+app.controller("CtrPrincipal", [ '$scope', '$location', '$log', '$http',
+		function($scope, $location, $log, $http) {
+			var url = $location.url();
+			console.log("url zzz:" + url);
+			// console.log("function called");
 
-							(function($) {
-								$(document)
-										.ready(
-												function() {
-													$('#cssmenu ul ul li:odd')
-															.addClass('odd');
-													$('#cssmenu ul ul li:even')
-															.addClass('even');
-													$('#cssmenu > ul > li > a')
-															.click(
-																	function() {
-																		$(
-																				'#cssmenu li')
-																				.removeClass(
-																						'active');
-																		$(this)
-																				.closest(
-																						'li')
-																				.addClass(
-																						'active');
-																		var checkElement = $(
-																				this)
-																				.next();
-																		if ((checkElement
-																				.is('ul'))
-																				&& (checkElement
-																						.is(':visible'))) {
-																			$(
-																					this)
-																					.closest(
-																							'li')
-																					.removeClass(
-																							'active');
-																			checkElement
-																					.slideUp('normal');
-																		}
-																		if ((checkElement
-																				.is('ul'))
-																				&& (!checkElement
-																						.is(':visible'))) {
-																			$(
-																					'#cssmenu ul ul:visible')
-																					.slideUp(
-																							'normal');
-																			checkElement
-																					.slideDown('normal');
-																		}
-																		if ($(
-																				this)
-																				.closest(
-																						'li')
-																				.find(
-																						'ul')
-																				.children().length == 0) {
-																			return true;
-																		} else {
-																			return false;
-																		}
-																	});
-												});
-							})(jQuery);
+			$scope.login = function() {
+				$location.path(url + 'principal');
+				// $http({
+				// method : 'GET',
+				// url :
+				// 'http://localhost:8081/WebStudios/login'
+				// }).success(function(data, status, headers,
+				// config) {
+				// $location.path('/principal.html');
+				// $scope.seguro = data;
+				// console.log("exitosos");
+				// }).error(function(data, status, headers,
+				// config) {
+				// alert("Ha fallado la petición. Estado HTTP:"
+				// + status);
+				// console.log("no exitosos");
+				// });
+			}
 
-							$scope.login = function() {
-								$location.path(url + 'principal');
-								// $http({
-								// method : 'GET',
-								// url :
-								// 'http://localhost:8081/WebStudios/login'
-								// }).success(function(data, status, headers,
-								// config) {
-								// $location.path('/principal.html');
-								// $scope.seguro = data;
-								// console.log("exitosos");
-								// }).error(function(data, status, headers,
-								// config) {
-								// alert("Ha fallado la petición. Estado HTTP:"
-								// + status);
-								// console.log("no exitosos");
-								// });
-							}
-
-							// $scope.myFunc = function() {
-							// console.log("function called");
-							//
-							// $http({
-							// method : 'GET',
-							// url : 'http://localhost:8081/WebStudios/login'
-							// }).success(function(data, status, headers,
-							// config) {
-							// // fnOK(data);
-							// console.log(data)
-							//					
-							// $location.path('/principal')
-							// }).error(function(data, status, headers, config)
-							// {
-							// // fnError(data, status);
-							// });
-							//
-							// };
-
-						} ]);
+		} ]);
